@@ -2,7 +2,7 @@ cd /path/to/Echo
 n_gpu=8
 experiment_name=demo
 checkpoint=/path/to/merged_model
-prompt=inference/grounding_1_0715.txt
+prompt=inference/prompt.txt
 experiment_dir=output/$experiment_name
 # 检查目录是否存在
 if [ ! -d "$experiment_dir" ]; then

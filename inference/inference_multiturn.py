@@ -209,7 +209,7 @@ def extract_prediction(answer: str, choices: list) -> str:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run inference with Qwen2.5-Omni model")
     parser.add_argument("--checkpoint", type=str, default='/path/to/merged_model')
-    parser.add_argument("--prompt", type=str, default='inference/grounding_1_0715.txt')
+    parser.add_argument("--prompt", type=str, default='inference/prompt.txt')
     parser.add_argument("--benchmark", type=str, default='MMAR')
     parser.add_argument("--output_file", type=str, default='output/test.json')
     parser.add_argument("--rank", type=int, default=0)
