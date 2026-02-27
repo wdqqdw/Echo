@@ -1,0 +1,62 @@
+data:
+  train_batch_size: 256
+  micro_batch_size: null # will be deprecated, use micro_batch_size_per_gpu
+  micro_batch_size_per_gpu: 4  # this is also val batch size
+  train_files: /mnt/bn/chuwei-nas-hl/users/jinhaopeng/experiments/open_verl/data/verl/Policy/qwen3_sft/train.parquet
+  val_files: /mnt/bn/chuwei-nas-hl/users/jinhaopeng/experiments/open_verl/data/verl/Policy/qwen3_sft/test.parquet
+  # Single-turn settings
+  prompt_key: prompt
+  response_key: response
+  prompt_dict_keys: ['question']
+  response_dict_keys: ['answer']
+  # Multi-turn settings
+  multiturn:
+    enable: false  # Set to true to use multi-turn dataset
+    messages_key: messages  # Key for messages list in multi-turn mode
+  max_length: 2048
+  truncation: left
+  balance_dp_token: true  # 修改为true，与命令行参数一致
+  chat_template: null
+  custom_cls:
+    path: null
+    name: null
+  use_shm: False
+model:
+  partial_pretrain: ~/models/gemma-1.1-7b-it
+  use_shm: False
+  fsdp_config:
+    wrap_policy:
+      name: transposed  # 添加名称，与命令行参数一致
+      disable: false    # 添加disable选项
+      min_num_params: 0 # 保留原有的最小参数设置
+    cpu_offload: false
+    offload_params: false
+  external_lib: null
+  enable_gradient_checkpointing: true  # 修改为true，与命令行参数一致
+  trust_remote_code: true  # 可能需要设置为true以加载模型
+  lora_rank: 0  # Set to positive value to enable LoRA (e.g., 32)
+  lora_alpha: 16  # LoRA scaling factor
+  target_modules: all-linear  # Target modules for LoRA adaptation
+  use_liger: False
+  strategy: fsdp2
+optim:
+  lr: 5e-6  # 修改为5e-6，与命令行参数一致
+  betas: [0.9, 0.95]
+  weight_decay: 0.01
+  warmup_steps_ratio: 0.05  # 修改为0.05，与命令行参数一致
+  clip_grad: 1.0
+  lr_scheduler: cosine
+
+ulysses_sequence_parallel_size: 1
+use_remove_padding: false
+
+trainer:
+  default_local_dir: /mnt/bn/chuwei-nas-hl/users/jinhaopeng/experiments/exps/awemerl_exp_sft_Qwen3_1_7b/checkpoints  # 修改为实际路径
+  default_hdfs_dir: null  # 修改为null，与命令行参数一致
+  resume_path: null
+  project_name: Awemerl-Qwen3  # 修改为实际项目名称
+  experiment_name: full-finetune  # 修改为实际实验名称
+  total_epochs: 4
+  total_training_steps: null
+  logger: ['console', 'wandb']  # 添加wandb日志记录
+  seed: 1

@@ -1,0 +1,1 @@
+[QUESTION] Choose the answer from [CHOICES]. Think step-by-step. Refer to the specific audio segments while thinking, and indicate the corresponding timestamps. Answer in the format of <think>...</think><answer>...</answer>.
