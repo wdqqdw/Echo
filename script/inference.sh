@@ -1,5 +1,3 @@
-#bash /mnt/bn/wdq-base1/data/ALMs/think_with_audio/setup.sh
-
 cd /path/to/Echo
 n_gpu=8
 experiment_name=demo
@@ -56,10 +54,10 @@ for benchmark in ${benchmarks[@]}; do
         --output $output_dir/merged.json
 
     if [ "$benchmark" = "MMAR" ]; then
-        python /mnt/bn/wdq-base1/data/ALMs/datasets/MMAR/code/evaluation.py \
+        python /path/to/MMAR/code/evaluation.py \
             --input $output_dir/merged.json > $output_dir/evaluation.txt
     elif [ "$benchmark" = "MMAU-mini" ]; then
-        python /mnt/bn/wdq-base1/data/ALMs/datasets/MMAU/evaluation.py \
+        python /path/to/MMAU/evaluation.py \
             --input $output_dir/merged.json > $output_dir/evaluation.txt
     fi
 
