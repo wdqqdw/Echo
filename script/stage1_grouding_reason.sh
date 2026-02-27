@@ -1,8 +1,8 @@
-sudo pip install ms-swift==3.5.2
-sudo pip install deepspeed --upgrade
-sudo pip install "decord" -U
-sudo pip install qwen-omni-utils[decord] -U
-sudo pip install accelerate
+pip install ms-swift==3.5.2
+pip install deepspeed --upgrade
+pip install "decord" -U
+pip install qwen-omni-utils[decord] -U
+pip install accelerate
 
 cd /path/to/Echo/ms-swift
 
