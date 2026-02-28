@@ -1,4 +1,7 @@
 # Echo
+
+[![Paper](https://img.shields.io/badge/Paper-arXiv-blue)](https://arxiv.org/abs/2602.11909)
+
 Project page of "**2026-ICLR Echo: Towards Advanced Audio Comprehension via Audio-Interleaved Reasoning**".
 
 Echo introduces an **audio-interleaved reasoning paradigm** that enables LALMs to proactively re-listen to relevant audio segments during the reasoning process.
